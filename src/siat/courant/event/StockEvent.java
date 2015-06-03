@@ -9,6 +9,14 @@ public class StockEvent implements Event{
 	long symbol;
 	String stockMarket;
 	
+	public StockEvent(){
+		this.timstamp=0;
+		this.id=0;
+		this.volume=0;
+		this.price=0;
+		this.symbol=0;
+	}
+	
 	public StockEvent(long timestamp, long id, long volume, long price, long symbol, String stockMarket){
 		this.timstamp=timestamp;
 		this.id=id;
