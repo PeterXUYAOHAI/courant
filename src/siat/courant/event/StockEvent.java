@@ -15,6 +15,7 @@ public class StockEvent implements Event{
 		this.volume=0;
 		this.price=0;
 		this.symbol=0;
+		stockMarket="TBD";
 	}
 	
 	public StockEvent(long timestamp, long id, long volume, long price, long symbol, String stockMarket){
@@ -23,7 +24,7 @@ public class StockEvent implements Event{
 		this.volume=volume;
 		this.price=price;
 		this.symbol=symbol;
-		this.stockMarkeet=stockMarket;
+		this.stockMarket=stockMarket;
 	}
 	
 	public long getTimestamp(){
@@ -77,8 +78,11 @@ public class StockEvent implements Event{
 	}
 	
 	public String toString(){
-		return "ID = "+ id + "\tTimestamp = " + timestamp
-				+ "\tSymbol = " + this.symbol + "\tStockMarket" + stockMarket + "\tPrice = " + price + "\tVolume = " + volume;
-		
+		return "ID = "+ id + 
+			"\tTimestamp = " + timestamp
+				+ "\tSymbol = " + symbol + 
+				"\tStockMarket" + stockMarket + 
+				"\tPrice = " + price + 
+				"\tVolume = " + volume;
 	}
 }
