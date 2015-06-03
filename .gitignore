@@ -1,0 +1,9 @@
+.DS_store
+.project
+.classpath
+.settings
+bin/
+src/siat/courant/event/ParkEvent.java
+src/siat/courant/event/Geo3in.java
+src/siat/courant/event/Rfid3in.java
+
