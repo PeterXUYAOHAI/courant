@@ -1,6 +1,7 @@
 package siat.courant.event;
 
 public interface Event {
+	
 	public long getTimestamp();
 	public long getId();
 	public String getEventType();
