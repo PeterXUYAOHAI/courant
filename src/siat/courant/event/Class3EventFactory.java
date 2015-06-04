@@ -3,6 +3,10 @@ package siat.courant.event;
 import java.util.Date;
 
 public class Class3EventFactory extends EventFactory {
+
+	public Event createEvent(){
+		return null;
+	}
 	public ParkEvent createEvent(String type){
 		if(type.equals("outg")){
 			return new Geo3in(888, 0, 431, new Date().getTime());

@@ -1,16 +1,17 @@
+package siat.courant.event;
 
 public class StockEvent implements Event{
 	
 	long timestamp;
 	long id;
-	String EventType="stock";
+	String eventType="stock";
 	long volume;
 	long price;
 	long symbol;
 	String stockMarket;
 	
 	public StockEvent(){
-		this.timstamp=0;
+		this.timestamp=0;
 		this.id=0;
 		this.volume=0;
 		this.price=0;
@@ -19,7 +20,7 @@ public class StockEvent implements Event{
 	}
 	
 	public StockEvent(long timestamp, long id, long volume, long price, long symbol, String stockMarket){
-		this.timstamp=timestamp;
+		this.timestamp=timestamp;
 		this.id=id;
 		this.volume=volume;
 		this.price=price;
@@ -64,17 +65,18 @@ public class StockEvent implements Event{
 	}
 	
 	public long getAttributeByName(String attributeName){
-		if(attributeName.equals('volume'))
-			return volume;
-		else if(attributeName.equals('price'))
-			return price;
-		else if(attributeName.equals('symbol'))
-			return symbol;
-		else if(attributeName.equals('Timestamp'))
-			return timestamp;
-		else if(attributeName.equals('id'))
-			return id;
-		return null;
+		//if(attributeName.equals('volume'))
+			//return volume;
+		//else if(attributeName.equals('price'))
+			//return price;
+		//else if(attributeName.equals('symbol'))
+			//return symbol;
+		//else if(attributeName.equals('Timestamp'))
+			//return timestamp;
+		//else if(attributeName.equals('id'))
+			//return id;
+		//return null;
+		return -1L;
 	}
 	
 	public String toString(){
