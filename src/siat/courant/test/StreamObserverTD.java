@@ -10,8 +10,7 @@ import siat.courant.stream.StreamHub;
 public class StreamObserverTD {
 	public static void main(String args[]){
 		Class3EventFactory c3f=new Class3EventFactory();
-		Event event1,event2;
-		Event event3,event4;
+		Event event1,event2, event3,event4;
 		
         StreamHub streamHub=new StreamHub();
         PseudoEngine pe1=new PseudoEngine();

@@ -3,10 +3,10 @@ package siat.courant.event;
 import java.util.HashMap;
 
 public class EventBuffer {
-	HashMap<Long, Event> eventBuffer;
+	HashMap<Integer, Event> eventBuffer;
 
 	public EventBuffer(){
-		eventBuffer = new HashMap<Long, Event>();
+		eventBuffer = new HashMap<Integer, Event>();
 		
 	}
 

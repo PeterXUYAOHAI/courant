@@ -3,11 +3,11 @@ package siat.courant.event;
 public class StockEvent implements Event{
 	
 	long timestamp;
-	long id;
+	int id;
 	String eventType="stock";
-	long volume;
-	long price;
-	long symbol;
+	int volume;
+	int price;
+	int symbol;
 	String stockMarket;
 	
 	public StockEvent(){
@@ -19,7 +19,7 @@ public class StockEvent implements Event{
 		stockMarket="TBD";
 	}
 	
-	public StockEvent(long timestamp, long id, long volume, long price, long symbol, String stockMarket){
+	public StockEvent(long timestamp, int id, int volume, int price, int symbol, String stockMarket){
 		this.timestamp=timestamp;
 		this.id=id;
 		this.volume=volume;
@@ -28,43 +28,63 @@ public class StockEvent implements Event{
 		this.stockMarket=stockMarket;
 	}
 	
-	public long getTimestamp(){
+	public long getTimestamp() {
 		return timestamp;
 	}
-	
-	public long getId(){
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public int getId() {
 		return id;
 	}
-	
-	public String getEventType(){
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEventType() {
 		return eventType;
 	}
-	
-	public void setId(long id){
-		this.id=id;
+
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
 	}
-	
-	public void setTimestamp(long timestamp){
-		this.timestamp=timestamp;
+
+	public int getVolume() {
+		return volume;
 	}
-	
-	public void setVolume(long volume){
-		this.volume=volume;
+
+	public void setVolume(int volume) {
+		this.volume = volume;
 	}
-	
-	public void setPrice(long price){
-		this.price=price;
+
+	public int getPrice() {
+		return price;
 	}
-	
-	public void setSymbol(long symbol){
-		this.symbol=symbol;
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	
-	public void setStockMarket(String stockMarket){
-		this.stockMarket=stockMarket;
+
+	public int getSymbol() {
+		return symbol;
 	}
-	
-	public long getAttributeByName(String attributeName){
+
+	public void setSymbol(int symbol) {
+		this.symbol = symbol;
+	}
+
+	public String getStockMarket() {
+		return stockMarket;
+	}
+
+	public void setStockMarket(String stockMarket) {
+		this.stockMarket = stockMarket;
+	}
+
+	public int getAttributeByName(String attributeName){
 		//if(attributeName.equals('volume'))
 			//return volume;
 		//else if(attributeName.equals('price'))
@@ -76,7 +96,7 @@ public class StockEvent implements Event{
 		//else if(attributeName.equals('id'))
 			//return id;
 		//return null;
-		return -1L;
+		return -1;
 	}
 	
 	public String toString(){
