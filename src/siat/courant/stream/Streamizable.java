@@ -8,7 +8,7 @@ public interface Streamizable {
 	void printStream();
 	//Event[] getEvents();
 	//void setEvents(Event[] es);
-	//long getSize();
+	long getSize();
 	//void setSize(long size); // really need?
 	//long getCounter();
 	//void setCounter(long counter);

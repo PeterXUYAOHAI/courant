@@ -11,11 +11,11 @@ public class StockEvent implements Event{
 	String stockMarket;
 	
 	public StockEvent(){
-		this.timestamp=0;
-		this.id=0;
-		this.volume=0;
-		this.price=0;
-		this.symbol=0;
+//		this.timestamp=0;
+//		this.id=0;
+//		this.volume=0;
+//		this.price=0;
+//		this.symbol=0;
 		stockMarket="TBD";
 	}
 	
@@ -28,42 +28,46 @@ public class StockEvent implements Event{
 		this.stockMarket=stockMarket;
 	}
 	
+	@Override
 	public long getTimestamp(){
 		return timestamp;
 	}
 	
+	@Override
 	public long getId(){
 		return id;
 	}
 	
+	@Override
 	public String getEventType(){
 		return eventType;
 	}
 	
-	public void setId(long id){
-		this.id=id;
-	}
+//	public void setId(long id){
+//		this.id=id;
+//	}
+//
+//	public void setTimestamp(long timestamp){
+//		this.timestamp=timestamp;
+//	}
+//
+//	public void setVolume(long volume){
+//		this.volume=volume;
+//	}
+//
+//	public void setPrice(long price){
+//		this.price=price;
+//	}
+//
+//	public void setSymbol(long symbol){
+//		this.symbol=symbol;
+//	}
+//
+//	public void setStockMarket(String stockMarket){
+//		this.stockMarket=stockMarket;
+//	}
 	
-	public void setTimestamp(long timestamp){
-		this.timestamp=timestamp;
-	}
-	
-	public void setVolume(long volume){
-		this.volume=volume;
-	}
-	
-	public void setPrice(long price){
-		this.price=price;
-	}
-	
-	public void setSymbol(long symbol){
-		this.symbol=symbol;
-	}
-	
-	public void setStockMarket(String stockMarket){
-		this.stockMarket=stockMarket;
-	}
-	
+	@Override
 	public long getAttributeByName(String attributeName){
 		//if(attributeName.equals('volume'))
 			//return volume;
@@ -79,6 +83,7 @@ public class StockEvent implements Event{
 		return -1L;
 	}
 	
+	@Override
 	public String toString(){
 		return "ID = "+ id + 
 			"\tTimestamp = " + timestamp

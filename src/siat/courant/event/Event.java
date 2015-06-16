@@ -7,6 +7,7 @@ public interface Event {
 	public String getEventType();
 	
 	public long getAttributeByName(String attributeName);
+	@Override
 	public String toString();
 
 }
