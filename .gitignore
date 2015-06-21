@@ -2,12 +2,14 @@
 .project
 .classpath
 .settings
+.idea/*
 bin/
 src/siat/courant/event/ParkEvent.java
 src/siat/courant/event/Geo3in.java
 src/siat/courant/event/Rfid3in.java
 *.class
 
+courant.iml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
