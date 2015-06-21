@@ -24,11 +24,10 @@
 */
 package siat.courant.query;
 
-import java.util.StringTokenizer;
-
-import edu.umass.cs.sase.stream.Event;
-
+import siat.courant.event.Event;
 import net.sourceforge.jeval.EvaluationException;
+
+import java.util.StringTokenizer;
 
 /**
  * This class represents a state from NFA.

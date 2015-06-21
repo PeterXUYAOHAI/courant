@@ -1,5 +1,7 @@
 package siat.courant.event;
 
+import java.util.Objects;
+
 public class StockEvent implements Event{
 	
 	long timestamp;
@@ -100,11 +102,27 @@ public class StockEvent implements Event{
 	}
 	
 	public String toString(){
-		return "ID = "+ id + 
-			"\tTimestamp = " + timestamp
-				+ "\tSymbol = " + symbol + 
-				"\tStockMarket" + stockMarket + 
-				"\tPrice = " + price + 
-				"\tVolume = " + volume;
+		return  "StockEvent" +
+				"\t" +id +
+			"\t" + timestamp
+				+ "\t" + symbol +
+				"\t" + stockMarket +
+				"\t" + price +
+				"\t" + volume;
+	}
+
+	@Override
+	public boolean equals(Object obj){
+		if (obj == null) return false ;
+		else{
+			if (obj instanceof StockEvent){
+				StockEvent s = (StockEvent) obj;
+				if(s.timestamp== this.timestamp && s.id == this.id && s.volume == this.volume&& s.price==this.price&& s.symbol==this.symbol&& s.stockMarket.equals(this.stockMarket)  ){
+					return true ;
+				}
+			}
+		}
+		return false ;
 	}
 }
+

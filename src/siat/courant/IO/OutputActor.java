@@ -1,5 +1,6 @@
 package siat.courant.IO;
 
+import siat.courant.engine.EngineConfigurer;
 import siat.courant.engine.RemoteService;
 import siat.courant.engine.Tuple;
 import siat.courant.event.Event;
@@ -12,44 +13,45 @@ import java.util.ArrayList;
 /**
  * Created by asus on 2015/6/16.
  */
-public class OutputActor {
+public class OutputActor implements Receiver {
 
-    String outputPath;
-    String outputName;
-    int outputLevel; //0-toString 1-toDB 2-toSocket 3-toFile 4-toRemote
+    int outputLevel;//0-toString 1-toDB 2-toSocket 3-toFile 4-toRemote
 
-    public OutputActor(){
-        this.outputLevel = 0;
-        this.outputName = "test.txt";
-        this.outputPath = "";
-    }
+    Tuple tuple = new Tuple();
+    EngineConfigurer engineConfigurer;
 
-    public OutputActor(String outputPath, String outputName,int outputLevel){
-        this.outputLevel = outputLevel;
-        this.outputName = outputName;
-        this.outputPath = outputPath;
-    }
-
- public void output(Tuple tuple, int outputLevel){
-     if (outputLevel==0)
-         tuple.toString();
-     else if (outputLevel==1)
-         outputToDB(tuple);
-     else if (outputLevel==2)
-         outputToSocket(tuple);
-     else if (outputLevel==3)
-      //   outputToFile(tuple);
-     //else if (outputLevel==4)
-         //outputToRemote(tuple);
-        return;
- }
-
-    public void outputToDB(Tuple tuple){
-
-    }
-    public void outputToSocket(Tuple tuple){
-
-    }
+//    public OutputActor(){
+//        this.outputLevel = 0;
+//        this.outputName = "test.txt";
+//        this.outputPath = "";
+//    }
+//
+//    public OutputActor(String outputPath, String outputName,int outputLevel){
+//        this.outputLevel = outputLevel;
+//        this.outputName = outputName;
+//        this.outputPath = outputPath;
+//    }
+//
+// public void output(Tuple tuple, int outputLevel){
+//     if (outputLevel==0)
+//         tuple.toString();
+//     else if (outputLevel==1)
+//         outputToDB(tuple);
+//     else if (outputLevel==2)
+//         outputToSocket(tuple);
+//     else if (outputLevel==3)
+//      //   outputToFile(tuple);
+//     //else if (outputLevel==4)
+//         //outputToRemote(tuple);
+//        return;
+// }
+//
+//    public void outputToDB(Tuple tuple){
+//
+//    }
+//    public void outputToSocket(Tuple tuple){
+//
+//    }
 
     public void outputToFile(Tuple tuple,String filePath,String fileName) throws IOException {
         File file = new File(filePath+"/"+fileName);
@@ -63,9 +65,15 @@ public class OutputActor {
 
     }
 
-    public void outputToRemote(Tuple tuple,RemoteService remoteService){
-        ArrayList<Event> events = tuple.getEvents();
-        for (Event e:events )
-            remoteService.resultsProcess(e);
+//    public void outputToRemote(Tuple tuple,RemoteService remoteService){
+//        ArrayList<Event> events = tuple.getEvents();
+//        for (Event e:events )
+//            remoteService.resultsProcess(e);
+//    }
+
+    @Override
+    public void addTuple(Tuple tuple) throws IOException {
+        this.tuple=tuple;
+        outputToFile(tuple,"","test2");
     }
 }

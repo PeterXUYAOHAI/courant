@@ -8,10 +8,11 @@ public class Class3EventFactory extends EventFactory {
 		return null;
 	}
         
-        public Event createEvent(String type){
+	public Event createEvent(String type){
 		return null;
 	}
-	public ParkEvent createEvent(String type,long location, long existTag, long devId){
+
+	public Event createEvent(String type,int location, int existTag, int devId){
 		if(type.equals("outg")){
 			//return new Geo3in(888, 0, 431, new Date().getTime());
                         return new Geo3in(location, 0, devId, new Date().getTime());
@@ -23,7 +24,7 @@ public class Class3EventFactory extends EventFactory {
 		else return null;
 	}
         
-        public ParkEvent createEvent(String type,long location, long existTag, long devId, long rfidCardNo){
+        public Event createEvent(String type,int location, int existTag, int devId, int rfidCardNo){
 		if(type.equals("outr")){
 			return new Rfid3in(location, 0, devId, new Date().getTime(),rfidCardNo);
 		}

@@ -1,0 +1,4 @@
+PATTERN SEQ(stock! a, stock b)
+WHERE skip-till-any
+AND [symbol]
+WITHIN 200

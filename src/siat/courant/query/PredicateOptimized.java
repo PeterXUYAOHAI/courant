@@ -25,14 +25,13 @@
 */
 package siat.courant.query;
 
+import siat.courant.event.EventBuffer;
+import siat.courant.engine.Run;
+import siat.courant.event.Event;
+import net.sourceforge.jeval.*;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
-import edu.umass.cs.sase.engine.EventBuffer;
-import edu.umass.cs.sase.engine.Run;
-import edu.umass.cs.sase.stream.Event;
-
-import net.sourceforge.jeval.*;
 
 /**
  * This class represents a predicate of an edge.

@@ -8,16 +8,19 @@ public class StockEventFactory extends EventFactory{
 	}
 
 	@Override
-	Event createEvent(String EventType) {
-		// TODO Auto-generated method stub
+	public Event createEvent(String EventType) {
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public Event createEvent(String type, int location, int existTag, int devId) {
+		return null;
+	}
+
+	@Override
+	public Event createEvent(String type, int location, int existTag, int devId, int rfidCardNo) {
+		return null;
+	}
+
 
 }

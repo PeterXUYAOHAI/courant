@@ -24,15 +24,14 @@
 */
 package siat.courant.query;
 
+//import siat.courant.engine.ConfigFlags;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
-import edu.umass.cs.sase.engine.ConfigFlags;
-import edu.umass.cs.sase.engine.Run;
 
 
 /**
@@ -316,7 +315,7 @@ public class NFA {
 			this.timeWindow = Integer.parseInt(right);
 		}else if(left.equalsIgnoreCase("partitionAttribute")){
 			this.partitionAttribute = right;
-			ConfigFlags.partitionAttribute = right;
+			//ConfigFlags.partitionAttribute = right;
 			this.hasPartitionAttribute = true;
 		}
 	}

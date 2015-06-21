@@ -23,13 +23,13 @@
  * THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package siat.courant.query;
-import java.util.StringTokenizer;
 
-import edu.umass.cs.sase.engine.EventBuffer;
-import edu.umass.cs.sase.engine.Run;
-import edu.umass.cs.sase.stream.Event;
-
+import siat.courant.event.EventBuffer;
+import siat.courant.engine.Run;
+import siat.courant.event.Event;
 import net.sourceforge.jeval.*;
+
+import java.util.StringTokenizer;
 
 /**
  * This class represents a predicate of an edge.

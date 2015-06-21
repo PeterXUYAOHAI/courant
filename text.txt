@@ -1,0 +1,6 @@
+ID = 0	Timestamp = 0	Symbol = 0	StockMarketTBD	Price = 0	Volume = 0
+ID = 0	Timestamp = 0	Symbol = 0	StockMarketTBD	Price = 0	Volume = 0
+ID = 0	Timestamp = 0	Symbol = 0	StockMarketTBD	Price = 0	Volume = 0
+ID = 0	Timestamp = 0	Symbol = 0	StockMarketTBD	Price = 0	Volume = 0
+ID = 0	Timestamp = 0	Symbol = 0	StockMarketTBD	Price = 0	Volume = 0
+ID = 0	Timestamp = 0	Symbol = 0	StockMarketTBD	Price = 0	Volume = 0

@@ -1,24 +1,41 @@
-package siat.courant.event;import static org.junit.Assert.*;
+package siat.courant.event;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import ac.siat.parkdetect.stream.Event;
+import siat.courant.IO.OutputActor;
+import siat.courant.engine.Tuple;
 
-import com.sun.java.util.jar.pack.Package.File;import java.lang.Exception;import java.lang.String;
+
+import java.io.IOException;
+import java.lang.Exception;import java.lang.String;
+import java.util.ArrayList;
 
 public class TextParserTest {
 	String lineString;
 	TextParser tp1;
-	Event e;//e can be instantiated as StockEvent
-	
-
+	Event e1;
+	Event e2;
+	Event e3;//e can be instantiated as StockEvent
+	Event e4;
+	Tuple tuple = new Tuple();
+	OutputActor outputActor = new OutputActor();
+	ArrayList<Event> events = new ArrayList<>();
+;
 	@Before
 	public void setUp() throws Exception {
 		tp1=new TextParser();
-		e=new StockEvent(...);
-		lineString=e.toString();
+		e1 = new StockEvent();
+		e2 = new Geo3in(123,456,789,1000);
+		e3 = new Rfid3in(324,213,434,232,434);
+		e4 = new StockEvent();
+		tuple.addEvent(e2);
+		tuple.addEvent(e3);
+		tuple.addEvent(e1);
+		tuple.addEvent(e4);
+		lineString=e1.toString();
+
 
 	}
 
@@ -26,12 +43,26 @@ public class TextParserTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testTextParserShouldParseTextSuccessfully() {
-		tp1.parse(e);
-		tp1.readLine(lineString);
-		assertEquals(e.getPrice(), tp1.getAttributeByParseLinea("price"));
 
+
+	@Test
+	public void testTextParserWithFileInout() throws IOException {
+		try {
+			outputActor.outputToFile(tuple,"","test.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		tp1.readFile("test.txt");
+		System.out.println(tp1.nextParsedEventFromFile().getEventType());
+		System.out.println(tp1.nextParsedEventFromFile().getEventType());
+		System.out.println(tp1.nextParsedEventFromFile().getEventType());
+		System.out.println(tp1.nextParsedEventFromFile().getEventType());
+//		tp1.nextParsedEvent().getEventType();
+
+//		assertTrue(e1.equals(tp1.nextParsedEvent()));
+//		assertTrue(e2.equals(tp1.nextParsedEvent()));
+//		assertTrue(e3.equals(tp1.nextParsedEvent()));
+//		assertTrue(e4.equals(tp1.nextParsedEvent()));
 
 	}
 

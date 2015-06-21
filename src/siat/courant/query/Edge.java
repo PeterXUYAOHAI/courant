@@ -25,13 +25,12 @@
 package siat.courant.query;
 
 
-import java.util.StringTokenizer;
-
-import edu.umass.cs.sase.engine.EventBuffer;
-import edu.umass.cs.sase.engine.Run;
-import edu.umass.cs.sase.stream.Event;
-
+import siat.courant.event.EventBuffer;
+import siat.courant.engine.Run;
+import siat.courant.event.Event;
 import net.sourceforge.jeval.EvaluationException;
+
+import java.util.StringTokenizer;
 
 /**
  * This class represents an edge of an NFA.

@@ -14,11 +14,11 @@ public class EngineConfigurer {
     private boolean hasNegation;
     private boolean hasPartitionAttribute;
     private boolean printResults = true;
-    private int outputLevel = 0; //e.g.0-toString 1-toDB 2-toSocket 3-toFile 4-toRemote
-    private String outputPath = "";
-    private String outputName = "text.txt";
+    private int outputLevel = 0; //e.g.0-to Console, 1-toDB 2-toSocket 3-toFile 4-toRemote
+    private String outputFilePath = ".";
+    private String outputName = "result.log";
     private String partitionAttribute;
-    private String outputForm; //by "tuple" or by "event"
+    private String outputType; //by "tuple" or by "event"
 
 
 
@@ -81,13 +81,13 @@ public class EngineConfigurer {
     }
 
 
-    public String getOutputPath() {
-        return outputPath;
-    }
+//    public String getOutputPath() {
+//        return outputPath;
+//    }
 
-    public void setOutputPath(String outputPath) {
-        this.outputPath = outputPath;
-    }
+//    public void setOutputPath(String outputPath) {
+//        this.outputPath = outputPath;
+//    }
 
     public String getOutputName() {
         return outputName;
@@ -97,11 +97,11 @@ public class EngineConfigurer {
         this.outputName = outputName;
     }
 
-    public String getOutputForm() {
-        return outputForm;
+    public String getOutputType() {
+        return outputType;
     }
 
-    public void setOutputForm(String outputForm) {
-        this.outputForm = outputForm;
+    public void setOutputType(String outputType) {
+        this.outputType = outputType;
     }
 }
