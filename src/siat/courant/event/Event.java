@@ -9,5 +9,4 @@ public interface Event {
 	public int getAttributeByName(String attributeName);
 	public String toString();
 
-	int getPrice();
 }
