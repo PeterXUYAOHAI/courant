@@ -58,7 +58,6 @@ public class TextParserTest {
 		System.out.println(tp1.nextParsedEventFromFile().getEventType());
 		System.out.println(tp1.nextParsedEventFromFile().getEventType());
 //		tp1.nextParsedEvent().getEventType();
-
 //		assertTrue(e1.equals(tp1.nextParsedEvent()));
 //		assertTrue(e2.equals(tp1.nextParsedEvent()));
 //		assertTrue(e3.equals(tp1.nextParsedEvent()));

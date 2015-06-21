@@ -30,6 +30,7 @@ public class Tuple {
     public ArrayList<Event> getEvents(){
         return events;
     }
+    public int getSize(){return events.size();}
 
 }
 

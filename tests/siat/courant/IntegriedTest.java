@@ -28,8 +28,6 @@ public class IntegriedTest {
 
     }
 
-
-
     @Test
     public void testFromFactoryToOutput() throws IOException {
         stockEventFactory = new StockEventFactory();
