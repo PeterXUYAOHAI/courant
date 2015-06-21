@@ -1,8 +1,8 @@
 package siat.courant.engine;
 
-import siat.courant.IO.OutputActor;
-import siat.courant.IO.Receiver;
 import siat.courant.event.Event;
+import siat.courant.io.OutputActor;
+import siat.courant.io.Receiver;
 import siat.courant.stream.BlockingQueueStream;
 import siat.courant.stream.StreamHub;
 import siat.courant.stream.Streamizable;
