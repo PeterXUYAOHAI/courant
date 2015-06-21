@@ -1,4 +1,4 @@
-package siat.courant.IO;
+package siat.courant.io;
 
 import siat.courant.engine.EngineConfig;
 import siat.courant.engine.Tuple;

@@ -11,7 +11,12 @@ public class TextParser {
     BufferedReader br;
 
     public Event nextParsedEventFromFile() throws IOException {
-        return parsedEventByLine(br.readLine());
+    	String line=br.readLine();
+    	if(line!=null){
+    		return parsedEventByLine(line);
+    		
+    	}
+    	return null;
     }
 
     public void readFile(String FilePath) throws IOException {
