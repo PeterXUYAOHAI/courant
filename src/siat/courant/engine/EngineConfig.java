@@ -14,6 +14,11 @@ public class EngineConfig {
     private boolean hasNegation;
     private boolean hasPartitionAttribute;
     private boolean printResults = true;
+
+    public void setHasNegation(boolean hasNegation) {
+        this.hasNegation = hasNegation;
+    }
+
     private int outputLevel = 0; //e.g.0-to Console, 1-toDB 2-toSocket 3-toFile 4-toRemote
     private String outputFilePath = ".";
     private String outputName = "result.log";

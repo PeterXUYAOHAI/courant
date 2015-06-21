@@ -9,12 +9,15 @@ import siat.courant.stream.Streamizable;
 import siat.courant.query.NFA;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PseudoEngine {
 	Streamizable stream;
 	EngineConfig engineConfig;
 	Receiver receiver;
 	OutputActor outputActor;
+	ArrayList<Event> processorBuffer = new ArrayList<>();
+	int tag=0;
 
 	public PseudoEngine(){
 		stream=new BlockingQueueStream();
@@ -44,18 +47,34 @@ public class PseudoEngine {
 	}
 
 	public void runEngine() throws IOException {
-		receiver = new OutputActor(engineConfig);;
-		Tuple tuple = new Tuple();
-		pseudoProcessor(tuple);	//  specific method to be added,using pseudoProcessor instead first
+		receiver = new OutputActor(engineConfig);
+		while (true)
+			pseudoProcess(stream.popEvent());	//  specific method to be added,using pseudoProcessor instead first
 	}
 
-	public void pseudoProcessor(Tuple tuple) throws IOException {
-		while(stream.getSize()>0) {
-			tuple.addEvent(stream.popEvent());
-			if (tuple.getSize() >= 3)
-				break;
+	public void pseudoProcess(Event event) throws IOException {
+		if (tag>=3){
+			processorBuffer.clear();
+			tag = 0;
 		}
-		outputTuple(tuple);
+
+		if (processorBuffer.isEmpty())
+			processorBuffer.add(event);
+		else
+		{
+			long diff = event.getTimestamp() - processorBuffer.get(0).getTimestamp();
+			if (diff>0 && diff<engineConfig.getTimeWindow()){
+				Tuple tuple = new Tuple();
+				tuple.addEvent(processorBuffer.get(0));
+				tuple.addEvent(event);
+				outputTuple(tuple);
+				tag=0;
+				processorBuffer.clear();
+			}
+			else {
+				tag++;
+			}
+		}
 	}
 
 	public void addEvent(Event event){

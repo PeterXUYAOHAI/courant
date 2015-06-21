@@ -50,11 +50,16 @@ public class OutputActor implements Receiver {
     public void outputToSocket(Tuple tuple){
     }
 
+    public void outputToConsole(Tuple tuple){
+        System.out.println(tuple.toString());
+    }
+
     @Override
     public void addTuple(Tuple tuple) throws IOException {
         if (outputLevel==1)
             outputToFile(tuple,outputFilePath,getOutputFileName);
-        if (outputLevel==0);//to be implement
+        if (outputLevel==0)
+            outputToConsole(tuple);
         if (outputLevel==2);//to be implement
         if (outputLevel==3);//to be implement
     }
