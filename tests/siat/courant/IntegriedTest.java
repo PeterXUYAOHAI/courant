@@ -6,9 +6,7 @@ import org.junit.Test;
 import siat.courant.engine.PseudoEngine;
 import siat.courant.event.*;
 import siat.courant.stream.StreamHub;
-
 import java.io.IOException;
-
 /**
  * Created by asus on 2015/6/19.
  */
@@ -27,8 +25,6 @@ public class IntegriedTest {
     public void setUp(){
 
     }
-
-
 
     @Test
     public void testFromFactoryToOutput() throws IOException {
@@ -53,12 +49,6 @@ public class IntegriedTest {
         System.out.println(tp1.nextParsedEventFromFile().getEventType());
         System.out.println(tp1.nextParsedEventFromFile().getEventType());
         System.out.println(tp1.nextParsedEventFromFile().getEventType());
-
-
-
-
-
-
     }
 
 }

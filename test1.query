@@ -4,4 +4,4 @@ AND [gsdg]
 AND a[1].price % 500 = 0
 AND a[i].price > a[i-1].price
 AND b.volume < 150
-WITHIN 345
+WITHIN 1000

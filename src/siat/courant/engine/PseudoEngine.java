@@ -9,16 +9,18 @@ import siat.courant.stream.Streamizable;
 import siat.courant.query.NFA;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PseudoEngine {
 	Streamizable stream;
-	EngineConfigurer engineConfigurer;
+	EngineConfig engineConfig;
 	Receiver receiver;
 	OutputActor outputActor;
+	ArrayList<Event> processorBuffer = new ArrayList<>();
+	int tag=0;
 
 	public PseudoEngine(){
 		stream=new BlockingQueueStream();
-		receiver = new OutputActor();
 	}
 	
 	public void setInputStreamFrom(StreamHub streamHub){
@@ -31,13 +33,13 @@ public class PseudoEngine {
 
 	public void setNfa(String filePathName){
 		NFA nfa = new NFA(filePathName);
-		engineConfigurer = new EngineConfigurer();
-		engineConfigurer.setTimeWindow(nfa.getTimeWindow());
-		engineConfigurer.setSize(nfa.getSize());
-		engineConfigurer.setIsHasPartitionAttribute(nfa.isHasPartitionAttribute());
-		engineConfigurer.setIsHasNegation(nfa.isHasNegation());
-		engineConfigurer.setSelectionStrategy(nfa.getSelectionStrategy());
-		engineConfigurer.setPartitionAttribute(nfa.getPartitionAttribute());
+		engineConfig = new EngineConfig();
+		engineConfig.setTimeWindow(nfa.getTimeWindow());
+		engineConfig.setSize(nfa.getSize());
+		engineConfig.setIsHasPartitionAttribute(nfa.isHasPartitionAttribute());
+		engineConfig.setIsHasNegation(nfa.isHasNegation());
+		engineConfig.setSelectionStrategy(nfa.getSelectionStrategy());
+		engineConfig.setPartitionAttribute(nfa.getPartitionAttribute());
 		//outputLevel is set to be default(to-String) , could be changed by setOutputLevel(int outputLevel)
 		//outputName is set to be default(""), could be changed by setOutputName(String outputName)
 		//outputPath is set to be default("test.txt") , could be changed by setOutputPath(String outputPath)
@@ -45,73 +47,85 @@ public class PseudoEngine {
 	}
 
 	public void runEngine() throws IOException {
-		/*
-		specific method to be added
-		 */
-		Tuple tuple = new Tuple();
-		while(stream.getSize()>0)
-			tuple.addEvent(stream.popEvent());
-		outputTuple(tuple);
+		receiver = new OutputActor(engineConfig);
+		while (true)
+			pseudoProcess(stream.popEvent());	//  specific method to be added,using pseudoProcessor instead first
 	}
+
+	public void pseudoProcess(Event event) throws IOException {
+		if (tag>=3){
+			processorBuffer.clear();
+			tag = 0;
+		}
+
+		if (processorBuffer.isEmpty())
+			processorBuffer.add(event);
+		else
+		{
+			long diff = event.getTimestamp() - processorBuffer.get(0).getTimestamp();
+			if (diff>0 && diff<engineConfig.getTimeWindow()){
+				Tuple tuple = new Tuple();
+				tuple.addEvent(processorBuffer.get(0));
+				tuple.addEvent(event);
+				outputTuple(tuple);
+				tag=0;
+				processorBuffer.clear();
+			}
+			else {
+				tag++;
+			}
+		}
+	}
+
 	public void addEvent(Event event){
 	}
 	public void outputTuple(Tuple tuple) throws IOException {
-//		if (engineConfigurer.getOutputType().equals("tuple")) {
 			receiver.addTuple(tuple);
-//		}
-//		if (engineConfigurer.getOutputType().equals("event")) {
-//			for (Event e : tuple.getEvents()) {
-//				receiver.addTuple(e);
-//			}
-//		}
 	}
-		//outputActor.output(tuple,engineConfigurer.getOutputLevel());
 
 	public void setOutputLevel(int outputLevel){
-		engineConfigurer.setOutputLevel(outputLevel);
+		engineConfig.setOutputLevel(outputLevel);
 	}
-
-
 
 	public void setOutputForm(String outputForm){
-		engineConfigurer.setOutputType(outputForm);
+		engineConfig.setOutputType(outputForm);
 	}
 	public String getPartitionAttribute(){
-		if (this.engineConfigurer !=null)
-			return this.engineConfigurer.getPartitionAttribute();
+		if (this.engineConfig !=null)
+			return this.engineConfig.getPartitionAttribute();
 		else
 			return "";
 
 	}
 	public int getTimeWindow(){
-		if (this.engineConfigurer !=null)
-			return this.engineConfigurer.getTimeWindow();
+		if (this.engineConfig !=null)
+			return this.engineConfig.getTimeWindow();
 		else
 			return 0;
 	}
 	public int getSize(){
-		if (this.engineConfigurer !=null)
-			return this.engineConfigurer.getSize();
+		if (this.engineConfig !=null)
+			return this.engineConfig.getSize();
 		else
 			return 0;
 	}
 	public boolean isHasPartitionAttribute(){
-		if (this.engineConfigurer !=null)
-			return this.engineConfigurer.isHasPartitionAttribute();
+		if (this.engineConfig !=null)
+			return this.engineConfig.isHasPartitionAttribute();
 		else
 			return false;
 	}
 
 	public boolean isHasNegation(){
-		if (this.engineConfigurer !=null)
-			return this.engineConfigurer.isHasNegation();
+		if (this.engineConfig !=null)
+			return this.engineConfig.isHasNegation();
 		else
 			return false;
 	}
 
 	public String getSelectionStrategy(){
-		if (engineConfigurer !=null)
-			return this.engineConfigurer.getSelectionStrategy();
+		if (engineConfig !=null)
+			return this.engineConfig.getSelectionStrategy();
 		else
 			return null;
 	}
