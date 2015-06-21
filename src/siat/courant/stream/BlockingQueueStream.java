@@ -12,6 +12,7 @@ public class BlockingQueueStream implements Streamizable {
 		events=new LinkedBlockingQueue<Event>();
 	}
 	
+	@Override
 	public Event popEvent(){
 		Event event=null;
 		try{
@@ -21,6 +22,7 @@ public class BlockingQueueStream implements Streamizable {
 		}
 		return event;
 	}
+	@Override
 	public void addEvent(Event event){
 		try {
 			events.put(event);
@@ -29,6 +31,7 @@ public class BlockingQueueStream implements Streamizable {
 		}
 	}
 	
+	@Override
 	public void printStream(){
 		int i=0;
 		for(Event event : events){
@@ -36,7 +39,12 @@ public class BlockingQueueStream implements Streamizable {
 			i++;
 		}
 	}
-	
+
+	@Override
+	public long getSize() {
+		return events.size();
+	}
+
 	public BlockingQueue<Event> getEvents(){
 		return events;
 	}

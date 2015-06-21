@@ -17,9 +17,9 @@ public class StreamObserverTD {
         PseudoEngine pe2=new PseudoEngine();
         PseudoEngine pe3=new PseudoEngine();
 
-        pe1.setInputStream(streamHub);
-        pe2.setInputStream(streamHub);
-        pe3.setInputStream(streamHub);
+        pe1.setInputStreamFrom(streamHub);
+        pe2.setInputStreamFrom(streamHub);
+        pe3.setInputStreamFrom(streamHub);
 
 		event1=(Geo3in) c3f.createEvent("ing");
 		event2=(Rfid3in) c3f.createEvent("inr");

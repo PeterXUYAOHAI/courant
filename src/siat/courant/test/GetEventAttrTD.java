@@ -5,6 +5,7 @@ import siat.courant.event.Rfid3in;
 
 public class GetEventAttrTD {
 	public static void main(String [] args){
+            System.out.println("test");
 		Rfid3in re1=new Rfid3in(888, 1, 222, 333, 444);
 		Rfid3in re2=new Rfid3in(888, 1, 222, 333, 444);
 		Geo3in ge1=new Geo3in(999, 12, 222, 33434);
