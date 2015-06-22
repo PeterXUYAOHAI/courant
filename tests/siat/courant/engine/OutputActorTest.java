@@ -3,7 +3,7 @@ package siat.courant.engine;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import siat.courant.IO.OutputActor;
+import siat.courant.io.OutputActor;
 import siat.courant.event.Event;
 import siat.courant.event.StockEvent;
 
@@ -56,9 +56,13 @@ public class OutputActorTest {
         String filePath = "";
         String fileName = "text.txt";
         tuple.addEvent(event1);
+        System.out.println("Event added to tuple ");
         outputActor.outputToFile(tuple, filePath, fileName);
+        System.out.println("Output " + fileName + " to " + filePath);
         BufferedReader br = new BufferedReader(new FileReader(fileName));
-        assertEquals("ID = 0\tTimestamp = 0\tSymbol = 0\tStockMarketTBD\tPrice = 0\tVolume = 0",br.readLine() );
+        System.out.println("Checking file");
+        assertEquals("StockEvent\t0\t0\t0\tTBD\t0\t0",br.readLine() );
+        System.out.println("Testing passed");
     }
 
 }

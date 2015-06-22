@@ -19,10 +19,12 @@ public class TextParser {
     	return null;
     }
 
+
     public void readFile(String FilePath) throws IOException {
         br = new BufferedReader(new FileReader(FilePath));
     }
 
+    //parse the texts by the type of the event, more general method is needed
     public Event parsedEventByLine(String line){
         String[] words = line.split("\\s+");
         if (words[0].equals("StockEvent"))

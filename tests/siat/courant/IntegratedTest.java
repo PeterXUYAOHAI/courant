@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by asus on 2015/6/19.
  */
-public class IntegriedTest {
+public class IntegratedTest {
     EventFactory stockEventFactory;
     EventFactory class3EventFactory;
     Event e1;

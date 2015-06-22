@@ -20,7 +20,7 @@ public class PseudoProcessorTD {
 			while((event=textParser.nextParsedEventFromFile())!=null){
         		streamHub.receiveEvent(event);
         	}
-        	pseudoEngine.setOutputLevel(0);
+        	pseudoEngine.setOutputLevel(0); //Output Level 0 - to Console
         	pseudoEngine.runEngine();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

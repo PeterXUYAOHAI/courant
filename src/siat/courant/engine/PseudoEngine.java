@@ -17,7 +17,7 @@ public class PseudoEngine {
 	Receiver receiver;
 	OutputActor outputActor;
 	ArrayList<Event> processorBuffer = new ArrayList<>();
-	int tag=0;
+	int tag=0; //for psedoProcessor to count how many events are ignored
 
 	public PseudoEngine(){
 		stream=new BlockingQueueStream();
@@ -53,6 +53,7 @@ public class PseudoEngine {
 	}
 
 	public void pseudoProcess(Event event) throws IOException {
+		//if the first event has stayed in the buffer and three events are ignored then clear the buffer (avoid extremum values)
 		if (tag>=3){
 			processorBuffer.clear();
 			tag = 0;
@@ -60,6 +61,7 @@ public class PseudoEngine {
 
 		if (processorBuffer.isEmpty())
 			processorBuffer.add(event);
+		//if the processorBuffer already have first event, then check next event until an event which fulfill the requirement appear. Then output the two event in a tuple
 		else
 		{
 			long diff = event.getTimestamp() - processorBuffer.get(0).getTimestamp();

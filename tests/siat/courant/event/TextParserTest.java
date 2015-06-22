@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import siat.courant.IO.OutputActor;
+import siat.courant.io.OutputActor;
 import siat.courant.engine.Tuple;
 
 

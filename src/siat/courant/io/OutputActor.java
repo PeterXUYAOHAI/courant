@@ -13,13 +13,15 @@ import java.io.IOException;
  */
 public class OutputActor implements Receiver {
 
-    int outputLevel;//0-toString 1-toDB 2-toSocket 3-toFile 4-toRemote
+    int outputLevel;//0-toConsole 1-toDB 2-toSocket 3-toFile 4-toRemote
     String outputFilePath;
     String getOutputFileName;
     Tuple tuple = new Tuple();
     EngineConfig engineConfig;
 
     public OutputActor(){}
+
+    // get output setting from engineConfig
     public OutputActor(EngineConfig engineConfig){
         outputLevel = engineConfig.getOutputLevel();
         outputFilePath = engineConfig.getOutputFilePath();

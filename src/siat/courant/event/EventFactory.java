@@ -1,5 +1,6 @@
 package siat.courant.event;
 
+//the interface still needs modification: find a universal creatEvent method.
 public abstract class EventFactory {
 
 	public abstract Event createEvent();
