@@ -14,6 +14,7 @@ public class PseudoProcessorTD {
         pseudoEngine.setNfa("test1.query");
         pseudoEngine.setInputStreamFrom(streamHub);
         TextParser textParser = new TextParser();
+
         try {
 			textParser.readFile("test123");
 			Event event;
